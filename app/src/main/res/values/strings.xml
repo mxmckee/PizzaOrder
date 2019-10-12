@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PizzaOrder</string>
+    <string name="pizza_shape_round">ROUND</string>
+    <string name="pizza_shape_square">SQUARE</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="pepperoni">Pepperoni</string>
+    <string name="mushrooms">Mushrooms</string>
+    <string name="veggies">Veggies</string>
+    <string name="anchovies">Anchovies</string>
+    <string name="no_cheese">No Cheese</string>
+    <string name="cheese">Cheese</string>
+    <string name="two_times_cheese">2x Cheese</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="place_order">PLACE ORDER</string>
+</resources>

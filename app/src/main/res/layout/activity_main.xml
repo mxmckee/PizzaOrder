@@ -48,161 +48,173 @@
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
         <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group"
-            android:layout_width="match_parent"
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/toggle_button_group">
+            android:layout_marginStart="@dimen/space_big"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toggle_button_group"
+            app:singleLine="true"/>
 
-        </com.google.android.material.chip.ChipGroup>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
             android:id="@+id/ingredients_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_big"
-            android:layout_marginTop="@dimen/space_big"
+            android:layout_marginTop="@dimen/space_min"
             android:layout_marginEnd="@dimen/space_big"
-            android:background="@drawable/shape"
-            app:layout_constraintEnd_toEndOf="@+id/chip_group"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chip_group">
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+            app:cardCornerRadius="@dimen/space_min">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="338dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lobster_regular"
                 android:paddingHorizontal="@dimen/space_mid"
-                android:paddingVertical="@dimen/space_mid"
-                android:text="@string/ingredients"
-                android:textColor="@color/primaryColor"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:paddingVertical="@dimen/space_min">
 
-            <CheckBox
-                android:id="@+id/pepperoni_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_big"
-                android:text="@string/pepperoni"
-                android:textColor="@color/secondaryDarkColor"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
-                app:useMaterialThemeColors="false" />
-
-            <CheckBox
-                android:id="@+id/mushrooms_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_big"
-                android:text="@string/mushrooms"
-                android:textColor="@color/secondaryDarkColor"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pepperoni_checkbox"
-                app:useMaterialThemeColors="false" />
-
-            <CheckBox
-                android:id="@+id/veggies_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_big"
-                android:text="@string/veggies"
-                android:textColor="@color/secondaryDarkColor"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mushrooms_checkbox"
-                app:useMaterialThemeColors="false" />
-
-            <CheckBox
-                android:id="@+id/anchovies_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_big"
-                android:text="@string/anchovies"
-                android:textColor="@color/secondaryDarkColor"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/veggies_checkbox"
-                app:useMaterialThemeColors="false" />
-
-            <RadioGroup
-                android:id="@+id/cheese_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_big"
-                app:layout_constraintStart_toEndOf="@+id/mushrooms_checkbox"
-                app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="338dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/no_cheese" />
+                    android:fontFamily="@font/lobster_regular"
+                    android:paddingHorizontal="@dimen/space_min"
+                    android:paddingVertical="@dimen/space_min"
+                    android:text="@string/ingredients"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:layout_width="match_parent"
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/pepperoni_checkbox"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/cheese" />
+                    android:layout_marginStart="@dimen/space_mid"
+                    android:text="@string/pepperoni"
+                    android:textColor="@color/secondaryDarkColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    app:useMaterialThemeColors="false" />
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:layout_width="match_parent"
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/mushrooms_checkbox"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/two_times_cheese" />
-            </RadioGroup>
+                    android:layout_marginStart="@dimen/space_mid"
+                    android:text="@string/mushrooms"
+                    android:textColor="@color/secondaryDarkColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pepperoni_checkbox"
+                    app:useMaterialThemeColors="false" />
 
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="end"
-                app:layout_constraintStart_toStartOf="parent"
-                app:constraint_referenced_ids="pepperoni_checkbox,mushrooms_checkbox,veggies_checkbox,anchovies_checkbox"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/veggies_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_mid"
+                    android:text="@string/veggies"
+                    android:textColor="@color/secondaryDarkColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mushrooms_checkbox"
+                    app:useMaterialThemeColors="false" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/anchovies_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_mid"
+                    android:text="@string/anchovies"
+                    android:textColor="@color/secondaryDarkColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/veggies_checkbox"
+                    app:useMaterialThemeColors="false" />
+
+                <RadioGroup
+                    android:id="@+id/cheese_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    app:layout_constraintStart_toEndOf="@+id/mushrooms_checkbox"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_cheese" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cheese" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/two_times_cheese" />
+                </RadioGroup>
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="end"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:constraint_referenced_ids="pepperoni_checkbox,mushrooms_checkbox,veggies_checkbox,anchovies_checkbox"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/contact_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_big"
             android:layout_marginTop="@dimen/space_min"
             android:layout_marginEnd="@dimen/space_big"
-            android:background="@drawable/shape"
-            android:paddingHorizontal="@dimen/space_mid"
-            android:paddingVertical="@dimen/space_mid"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ingredients_layout">
+            app:layout_constraintTop_toBottomOf="@+id/ingredients_layout"
+            app:cardCornerRadius="@dimen/space_min">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
-                style="@style/TextInputLayout"
-                android:layout_width="315dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:paddingHorizontal="@dimen/space_mid"
+                android:paddingVertical="@dimen/space_mid">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout"
+                    style="@style/TextInputLayout"
+                    android:layout_width="315dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/name" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
-                style="@style/TextInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/name" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout2"
+                    style="@style/TextInputLayout"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/phone" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/phone" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/place_order_button"

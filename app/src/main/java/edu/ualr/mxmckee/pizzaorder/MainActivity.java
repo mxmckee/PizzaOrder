@@ -16,7 +16,6 @@ import com.google.android.material.chip.ChipGroup;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView imageView;
     private ChipGroup chipGroup;
 
     @Override
@@ -24,24 +23,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*Define a function updatePizzaShape (creates ToggleGroup onButtonCheckedListener) to use ToggleGroup to set ImageView*/
         MaterialButtonToggleGroup btnGroup = findViewById(R.id.toggle_button_group);
-        btnGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
+        ImageView imageView = findViewById(R.id.imageView);
+        updatePizzaShape(btnGroup, imageView);
 
-            @Override
-            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                imageView = findViewById(R.id.imageView);
-                if (isChecked) {
-                    if (checkedId == R.id.round_button) {
-                        imageView.setImageResource(R.drawable.ic_round_pizza);
-                    } else if (checkedId == R.id.square_button) {
-                        imageView.setImageResource(R.drawable.ic_squared_pizza);
-                    }
-                }
-            }
-        });
-
+        /*Define ChipGroup to be modified by CheckBoxes and RadioGroup buttons*/
         chipGroup = findViewById(R.id.chipGroup);
 
+        /*Define a function addOrRemoveToppings (creates CheckBox onCheckedChangeListener) to update ChipGroup to reflect checked items*/
         final MaterialCheckBox pepperoni_checkbox = findViewById(R.id.pepperoni_checkbox);
         final MaterialCheckBox mushrooms_checkbox = findViewById(R.id.mushrooms_checkbox);
         final MaterialCheckBox veggies_checkbox = findViewById(R.id.veggies_checkbox);
@@ -51,19 +41,23 @@ public class MainActivity extends AppCompatActivity {
         addOrRemoveTopping(veggies_checkbox);
         addOrRemoveTopping(anchovies_checkbox);
 
+        /*Define a function adjustCheeseAmount (creates RadioGroup onCheckedChangeListener) to update ChipGroup to reflect current selection*/
         RadioGroup cheeseAmountRG = findViewById(R.id.cheese_amount);
-        cheeseAmountRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        adjustCheeseAmount(cheeseAmountRG);
+    }
+
+    private void updatePizzaShape(MaterialButtonToggleGroup btnGroup, final ImageView imageView) {
+        btnGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
 
             @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-
-                int id = radioGroup.getCheckedRadioButtonId();
-                View radioButton = radioGroup.findViewById(id);
-                int radioId = radioGroup.indexOfChild(radioButton);
-                RadioButton btn = (RadioButton) radioGroup.getChildAt(radioId);
-                String current_amount = (String) btn.getText();
-
-                addChipToChipGroup(current_amount, chipGroup);
+            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
+                if (isChecked) {
+                    if (checkedId == R.id.round_button) {
+                        imageView.setImageResource(R.drawable.ic_round_pizza);
+                    } else if (checkedId == R.id.square_button) {
+                        imageView.setImageResource(R.drawable.ic_squared_pizza);
+                    }
+                }
             }
         });
     }
@@ -73,24 +67,47 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                addOrRemoveChip(compoundButton, b);
+                if (b) {
+                    addChipToChipGroup(compoundButton.getText().toString(), chipGroup);
+                }
+                else {
+                    removeChipFromChipGroup(compoundButton.getText().toString(), chipGroup);
+                }
             }
         });
     }
 
-    private void addOrRemoveChip(CompoundButton compoundButton, boolean b) {
-        if (b) {
-            addChipToChipGroup(compoundButton.getText().toString(), chipGroup);
-        }
-        else {
-            removeChipFromChipGroup(compoundButton.getText().toString(), chipGroup);
-        }
+    private void adjustCheeseAmount(RadioGroup cheeseAmountRG) {
+        cheeseAmountRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                String cheeseNone = getString(R.string.no_cheese);
+                String cheeseRegular = getString(R.string.cheese);
+                String cheeseDouble = getString(R.string.two_times_cheese);
+
+                int id = radioGroup.getCheckedRadioButtonId();
+                View radioButton = radioGroup.findViewById(id);
+                int radioId = radioGroup.indexOfChild(radioButton);
+                RadioButton btn = (RadioButton) radioGroup.getChildAt(radioId);
+                String current_amount = (String) btn.getText();
+
+                removeChipFromChipGroup(cheeseNone, chipGroup);
+                removeChipFromChipGroup(cheeseRegular, chipGroup);
+                removeChipFromChipGroup(cheeseDouble, chipGroup);
+
+                addChipToChipGroup(current_amount, chipGroup);
+            }
+        });
     }
 
     private void addChipToChipGroup(String chipText, ChipGroup chipGroup) {
         Chip chip = new Chip(MainActivity.this);
         chip.setText(chipText);
         chip.setTag(chipText);
+        chip.setChipBackgroundColorResource(R.color.primaryColor);
+        chip.setTextAppearanceResource(R.style.chipTextAppearance);
         chipGroup.addView(chip);
     }
 

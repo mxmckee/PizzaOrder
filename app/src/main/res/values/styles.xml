@@ -17,4 +17,8 @@
         <item name="backgroundTint">@color/primaryColor</item>
     </style>
 
+    <style name="chipTextAppearance" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
 </resources>

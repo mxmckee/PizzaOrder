@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 removeChipFromChipGroup(cheeseRegular, chipGroup);
                 removeChipFromChipGroup(cheeseDouble, chipGroup);
 
-                if (current_amount != cheeseNone) {
+                if (!current_amount.equals(cheeseNone)) {
 
                     /*Uncheck default selection*/
                     RadioButton default_selection = radioGroup.findViewById(R.id.default_selection);

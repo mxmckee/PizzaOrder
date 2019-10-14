@@ -61,8 +61,13 @@ public class MainActivity extends AppCompatActivity {
                 if (isChecked) {
                     if (checkedId == R.id.round_button) {
                         imageView.setImageResource(R.drawable.ic_round_pizza);
-                    } else if (checkedId == R.id.square_button) {
+                    } else {
                         imageView.setImageResource(R.drawable.ic_squared_pizza);
+                    }
+                }
+                else {
+                    if (group.getCheckedButtonId() != R.id.round_button && group.getCheckedButtonId() != R.id.square_button) {
+                        imageView.setImageResource(R.drawable.ic_not_selected_pizza);
                     }
                 }
             }

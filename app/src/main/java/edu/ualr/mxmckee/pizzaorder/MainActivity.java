@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         /*Define a function updatePizzaShape (creates ToggleGroup OnButtonCheckedListener) to use ToggleGroup to set ImageView*/
         MaterialButtonToggleGroup btnGroup = findViewById(R.id.toggle_button_group);
         ImageView imageView = findViewById(R.id.imageView);
+        btnGroup.check(R.id.round_button);
         updatePizzaShape(btnGroup, imageView);
 
         /*Define ChipGroup to be modified by CheckBoxes and RadioGroup buttons*/
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (!current_amount.equals(cheeseNone)) {
 
-                    /*Uncheck default selection*/
+                    //Uncheck default selection
                     RadioButton default_selection = radioGroup.findViewById(R.id.default_selection);
                     default_selection.setChecked(false);
                     addChipToChipGroup(current_amount, chipGroup);
@@ -119,11 +120,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addChipToChipGroup(String chipText, ChipGroup chipGroup) {
-        Chip chip = new Chip(MainActivity.this);
+        Chip chip = new Chip(MainActivity.this,null,R.attr.EntryChipStyle);
         chip.setText(chipText);
         chip.setTag(chipText);
-        chip.setChipBackgroundColorResource(R.color.primaryColor);
-        chip.setTextAppearanceResource(R.style.chipTextAppearance);
         chipGroup.addView(chip);
     }
 

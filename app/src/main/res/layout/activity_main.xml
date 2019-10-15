@@ -16,13 +16,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/space_big"
+            android:contentDescription="@string/pizza_shape_description"
             android:scaleType="fitCenter"
-            app:layout_constraintDimensionRatio="W, 1:1"
             app:layout_constraintBottom_toTopOf="@+id/toggle_button_group"
+            app:layout_constraintDimensionRatio="W, 1:1"
             app:layout_constraintEnd_toStartOf="@+id/barrier3"
             app:layout_constraintStart_toEndOf="@+id/barrier2"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_not_selected_pizza" />
+            app:srcCompat="@drawable/ic_round_pizza" />
 
         <com.google.android.material.button.MaterialButtonToggleGroup
             android:id="@+id/toggle_button_group"
@@ -215,7 +216,7 @@
                         android:id="@+id/input_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ic_person_24px"
+                        android:drawableStart="@drawable/ic_person_24px"
                         android:drawablePadding="@dimen/space_mid"
                         android:drawableTint="@color/secondaryColor"
                         android:hint="@string/name"
@@ -236,7 +237,7 @@
                         android:id="@+id/input_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ic_call_24px"
+                        android:drawableStart="@drawable/ic_call_24px"
                         android:drawablePadding="@dimen/space_mid"
                         android:drawableTint="@color/secondaryColor"
                         android:hint="@string/phone"
